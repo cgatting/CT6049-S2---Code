@@ -26,7 +26,29 @@ public class EtlService {
         try {
             // 1. Load Date Dimension (simplified: ensure current year dates exist)
             // Ideally this is pre-populated, but we'll add today if missing
+            // Also ensure dates from Loans exist
             loadDateDimension();
+            
+            // Backfill dates from OLTP loans
+            String backfillDates = "INSERT INTO library_dw.dim_date (date_key, full_date, day_of_month, month_name, month_number, quarter, year) " +
+                                   "SELECT DISTINCT " +
+                                   "CAST(DATE_FORMAT(date_col, '%Y%m%d') AS UNSIGNED), " +
+                                   "date_col, " +
+                                   "DAY(date_col), " +
+                                   "MONTHNAME(date_col), " +
+                                   "MONTH(date_col), " +
+                                   "QUARTER(date_col), " +
+                                   "YEAR(date_col) " +
+                                   "FROM ( " +
+                                   "    SELECT loan_date as date_col FROM library_oltp.Loan " +
+                                   "    UNION " +
+                                   "    SELECT due_date FROM library_oltp.Loan " +
+                                   "    UNION " +
+                                   "    SELECT return_date FROM library_oltp.Loan WHERE return_date IS NOT NULL " +
+                                   ") dates " +
+                                   "WHERE CAST(DATE_FORMAT(date_col, '%Y%m%d') AS UNSIGNED) NOT IN (SELECT date_key FROM library_dw.dim_date)";
+            
+            jdbcTemplate.update(backfillDates);
             message.append("Dates checked. ");
 
             // 2. Load Dimensions (SCD Type 1 - Overwrite/Ignore)

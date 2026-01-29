@@ -1,4 +1,4 @@
-[INFO] Launch script started at 29/01/2026 16:54:08.87 
+[INFO] Launch script started at 29/01/2026 17:12:52.39 
 WARNING: A restricted method in java.lang.System has been called
 WARNING: java.lang.System::load has been called by org.fusesource.jansi.internal.JansiLoader in an unnamed module (file:/C:/DevTools/Maven/apache-maven-3.9.6/lib/jansi-2.4.0.jar)
 WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
@@ -24,7 +24,7 @@ WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
 [INFO] 
 [INFO] --- compiler:3.11.0:compile (default-compile) @ library-etl-dashboard ---
 [INFO] Changes detected - recompiling the module! :source
-[INFO] Compiling 4 source files with javac [debug release 17] to target\classes
+[INFO] Compiling 5 source files with javac [debug release 17] to target\classes
 [INFO] 
 [INFO] --- resources:3.3.1:testResources (default-testResources) @ library-etl-dashboard ---
 [INFO] skip non existing resourceDirectory C:\Users\cgatt\OneDrive\Pictures\Desktop\CT6049 S2 - Code\CT6049-Assignment-002\app\src\test\resources
@@ -48,6 +48,6 @@ WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  5.177 s
-[INFO] Finished at: 2026-01-29T16:54:16Z
+[INFO] Total time:  5.125 s
+[INFO] Finished at: 2026-01-29T17:12:59Z
 [INFO] ------------------------------------------------------------------------

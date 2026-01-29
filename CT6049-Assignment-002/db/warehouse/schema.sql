@@ -63,10 +63,29 @@ CREATE TABLE IF NOT EXISTS fact_loan (
 );
 
 -- Indexes for Performance (Star Schema optimization)
-CREATE INDEX idx_fact_loan_date ON fact_loan(loan_date_key);
-CREATE INDEX idx_fact_student ON fact_loan(student_key);
-CREATE INDEX idx_fact_book ON fact_loan(book_key);
-CREATE INDEX idx_fact_location ON fact_loan(location_key);
+-- MySQL Constraint: Cannot drop index needed in a foreign key constraint.
+-- Foreign keys in fact_loan:
+-- FOREIGN KEY (loan_date_key) REFERENCES dim_date(date_key),
+-- FOREIGN KEY (student_key) REFERENCES dim_student(student_key),
+-- FOREIGN KEY (book_key) REFERENCES dim_book(book_key),
+-- FOREIGN KEY (location_key) REFERENCES dim_location(location_key)
+
+-- Since we are running this script on startup, and it contains CREATE TABLE IF NOT EXISTS,
+-- the tables and FKs likely already exist.
+-- MySQL implicitly creates indexes for Foreign Keys.
+-- So we DO NOT need to create them manually if the FK definition already created them.
+-- The error "Duplicate key name" happened because we tried to create an index with a name that might already be auto-generated or explicitly created before.
+-- And "Cannot drop index" happens because that index is supporting the FK.
+
+-- SOLUTION: Just remove the explicit CREATE INDEX statements for columns that are already Foreign Keys.
+-- MySQL automatically indexes FK columns. We don't need to duplicate this work.
+-- If we want custom names, we should have named them in the CREATE TABLE or accepted the default.
+-- For this assignment's stability, removing them is safest.
+
+-- CREATE INDEX idx_fact_loan_date ON fact_loan(loan_date_key); -- Already indexed by FK
+-- CREATE INDEX idx_fact_student ON fact_loan(student_key);     -- Already indexed by FK
+-- CREATE INDEX idx_fact_book ON fact_loan(book_key);           -- Already indexed by FK
+-- CREATE INDEX idx_fact_location ON fact_loan(location_key);   -- Already indexed by FK
 
 -- Audit Table for ETL
 CREATE TABLE IF NOT EXISTS etl_log (
