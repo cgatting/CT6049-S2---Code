@@ -1,0 +1,53 @@
+[INFO] Launch script started at 29/01/2026 16:54:08.87 
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by org.fusesource.jansi.internal.JansiLoader in an unnamed module (file:/C:/DevTools/Maven/apache-maven-3.9.6/lib/jansi-2.4.0.jar)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by com.google.common.util.concurrent.AbstractFuture$UnsafeAtomicHelper (file:/C:/DevTools/Maven/apache-maven-3.9.6/lib/guava-32.0.1-jre.jar)
+WARNING: Please consider reporting this to the maintainers of class com.google.common.util.concurrent.AbstractFuture$UnsafeAtomicHelper
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< com.library:library-etl-dashboard >------------------
+[INFO] Building library-etl-dashboard 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.3.2:clean (default-clean) @ library-etl-dashboard ---
+[INFO] Deleting C:\Users\cgatt\OneDrive\Pictures\Desktop\CT6049 S2 - Code\CT6049-Assignment-002\app\target
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ library-etl-dashboard ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 3 resources from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.11.0:compile (default-compile) @ library-etl-dashboard ---
+[INFO] Changes detected - recompiling the module! :source
+[INFO] Compiling 4 source files with javac [debug release 17] to target\classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ library-etl-dashboard ---
+[INFO] skip non existing resourceDirectory C:\Users\cgatt\OneDrive\Pictures\Desktop\CT6049 S2 - Code\CT6049-Assignment-002\app\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.11.0:testCompile (default-testCompile) @ library-etl-dashboard ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- surefire:3.1.2:test (default-test) @ library-etl-dashboard ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:3.3.0:jar (default-jar) @ library-etl-dashboard ---
+[INFO] Building jar: C:\Users\cgatt\OneDrive\Pictures\Desktop\CT6049 S2 - Code\CT6049-Assignment-002\app\target\library-etl-dashboard-0.0.1-SNAPSHOT.jar
+[INFO] 
+[INFO] --- spring-boot:3.2.2:repackage (repackage) @ library-etl-dashboard ---
+[INFO] Replacing main artifact C:\Users\cgatt\OneDrive\Pictures\Desktop\CT6049 S2 - Code\CT6049-Assignment-002\app\target\library-etl-dashboard-0.0.1-SNAPSHOT.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+[INFO] The original artifact has been renamed to C:\Users\cgatt\OneDrive\Pictures\Desktop\CT6049 S2 - Code\CT6049-Assignment-002\app\target\library-etl-dashboard-0.0.1-SNAPSHOT.jar.original
+[INFO] 
+[INFO] --- install:3.1.1:install (default-install) @ library-etl-dashboard ---
+[INFO] Installing C:\Users\cgatt\OneDrive\Pictures\Desktop\CT6049 S2 - Code\CT6049-Assignment-002\app\pom.xml to C:\Users\cgatt\.m2\repository\com\library\library-etl-dashboard\0.0.1-SNAPSHOT\library-etl-dashboard-0.0.1-SNAPSHOT.pom
+[INFO] Installing C:\Users\cgatt\OneDrive\Pictures\Desktop\CT6049 S2 - Code\CT6049-Assignment-002\app\target\library-etl-dashboard-0.0.1-SNAPSHOT.jar to C:\Users\cgatt\.m2\repository\com\library\library-etl-dashboard\0.0.1-SNAPSHOT\library-etl-dashboard-0.0.1-SNAPSHOT.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  5.177 s
+[INFO] Finished at: 2026-01-29T16:54:16Z
+[INFO] ------------------------------------------------------------------------
