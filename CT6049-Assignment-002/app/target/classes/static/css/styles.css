@@ -1,0 +1,156 @@
+/* CT6049-Assignment-002/app/src/main/resources/static/css/styles.css */
+:root {
+    --bg-color: #e0e5ec;
+    --text-color: #4a4a4a;
+    --shadow-light: #ffffff;
+    --shadow-dark: #a3b1c6;
+    --primary-accent: #6d5dfc;
+}
+
+body {
+    background-color: var(--bg-color);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Neumorphic Card / Container */
+.neu-card {
+    background-color: var(--bg-color);
+    border-radius: 20px;
+    box-shadow: 9px 9px 16px rgba(163, 177, 198, 0.6), 
+                -9px -9px 16px rgba(255, 255, 255, 0.5);
+    padding: 2rem;
+    margin: 1rem;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+/* Inputs - Inset Shadow */
+.neu-input {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 20px;
+    padding: 15px 20px;
+    width: 100%;
+    box-sizing: border-box;
+    outline: none;
+    box-shadow: inset 6px 6px 10px 0 rgba(163, 177, 198, 0.7), 
+                inset -6px -6px 10px 0 rgba(255, 255, 255, 0.8);
+    color: var(--text-color);
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+}
+
+.neu-input:focus {
+    box-shadow: inset 4px 4px 8px 0 rgba(163, 177, 198, 0.7), 
+                inset -4px -4px 8px 0 rgba(255, 255, 255, 0.8),
+                0 0 5px rgba(109, 93, 252, 0.1);
+}
+
+/* Buttons - Pop out with active state */
+.neu-btn {
+    background-color: var(--bg-color);
+    color: var(--primary-accent);
+    font-weight: 600;
+    border: none;
+    border-radius: 20px;
+    padding: 12px 30px;
+    cursor: pointer;
+    box-shadow: 6px 6px 10px 0 rgba(163, 177, 198, 0.7), 
+                -6px -6px 10px 0 rgba(255, 255, 255, 0.8);
+    transition: all 0.2s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.neu-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 8px 8px 12px 0 rgba(163, 177, 198, 0.7), 
+                -8px -8px 12px 0 rgba(255, 255, 255, 0.8);
+}
+
+.neu-btn:active, .neu-btn.active {
+    transform: translateY(1px);
+    box-shadow: inset 4px 4px 8px 0 rgba(163, 177, 198, 0.7), 
+                inset -4px -4px 8px 0 rgba(255, 255, 255, 0.8);
+}
+
+/* Layout Utilities */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.centered-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 400px;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+/* Navigation */
+.neu-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding: 1rem 2rem;
+}
+
+.nav-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-accent);
+}
+
+/* Tables */
+.neu-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.neu-table th, .neu-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid rgba(163, 177, 198, 0.3);
+}
+
+.neu-table th {
+    font-weight: 600;
+    color: var(--primary-accent);
+}
+
+/* Select/Dropdown */
+.neu-select {
+    appearance: none;
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 20px;
+    padding: 10px 40px 10px 20px;
+    color: var(--text-color);
+    box-shadow: 6px 6px 10px 0 rgba(163, 177, 198, 0.7), 
+                -6px -6px 10px 0 rgba(255, 255, 255, 0.8);
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%236d5dfc%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px top 50%;
+    background-size: 12px auto;
+    cursor: pointer;
+}

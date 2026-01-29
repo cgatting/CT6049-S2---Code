@@ -1,0 +1,83 @@
+<!-- CT6049-Assignment-002/app/src/main/resources/templates/dashboard.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <title>Library Data Warehouse - Dashboard</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <!-- Chart.js for optional visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <nav class="neu-nav">
+        <div class="nav-brand">Library DW</div>
+        <div>
+            <span style="margin-right: 1rem;">Welcome, <span th:text="${username}">User</span></span>
+            <form th:action="@{/logout}" method="post" style="display: inline;">
+                <button type="submit" class="neu-btn" style="padding: 8px 20px; font-size: 0.9rem;">Logout</button>
+            </form>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- ETL Control Panel (Admin Only) -->
+        <div class="neu-card" sec:authorize="hasRole('ADMIN')">
+            <h3 style="margin-top: 0;">ETL Management</h3>
+            <p>Trigger the extraction and load process from the Operational DB to the Warehouse.</p>
+            <div style="display: flex; align-items: center; gap: 1rem;">
+                <form th:action="@{/etl/run}" method="post">
+                    <button type="submit" class="neu-btn">Run ETL Process</button>
+                </form>
+                <span th:if="${message}" style="color: green; font-weight: bold;" th:text="${message}"></span>
+                <span th:if="${error}" style="color: red; font-weight: bold;" th:text="${error}"></span>
+            </div>
+        </div>
+
+        <!-- Dashboard Grid -->
+        <div class="dashboard-grid">
+            
+            <!-- Report Card -->
+            <div class="neu-card" style="grid-column: span 2;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                    <h3 style="margin: 0;">Loan Trends (Last 6 Months)</h3>
+                    <!-- Filter Example -->
+                    <select class="neu-select">
+                        <option>All Faculties</option>
+                        <option>Science</option>
+                        <option>Arts</option>
+                    </select>
+                </div>
+
+                <table class="neu-table">
+                    <thead>
+                        <tr>
+                            <th>Year</th>
+                            <th>Month</th>
+                            <th>Total Loans</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="row : ${reportData}">
+                            <td th:text="${row['year']}">2026</td>
+                            <td th:text="${row['month_name']}">January</td>
+                            <td th:text="${row['total_loans']}">150</td>
+                        </tr>
+                        <tr th:if="${#lists.isEmpty(reportData)}">
+                            <td colspan="3" style="text-align: center; color: #888;">No data available. Run ETL first.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Placeholder Chart Card -->
+            <div class="neu-card">
+                <h3 style="margin-top: 0;">Quick Stats</h3>
+                <div style="height: 200px; display: flex; justify-content: center; align-items: center; color: #888;">
+                    (Chart Placeholder)
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
